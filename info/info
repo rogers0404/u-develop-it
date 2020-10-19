@@ -1,0 +1,6 @@
+Setting the repository
+
+npm init --y
+npm install express sqlite3
+npm install jest --save-dev
+npm test
