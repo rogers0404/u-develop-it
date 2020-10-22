@@ -37,7 +37,11 @@ db.get(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
 
   // Get all candidates
 app.get('/api/candidates', (req, res) => {
-    const sql = `SELECT * FROM candidates`;
+    const sql = `SELECT candidates.*, parties.name 
+             AS party_name 
+             FROM candidates 
+             LEFT JOIN parties 
+             ON candidates.party_id = parties.id`;
     const params = [];
     db.all(sql, params, (err, rows) => {
       if (err) {
